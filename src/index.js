@@ -75,6 +75,11 @@ import modal from './menuModal.js'
 
     activeButton.classList.add('active');
     header.style.background = 'transparent';
+
+    const existingFooter = document.querySelector('footer');
+    if (existingFooter && !activeButton.classList.contains('about-btn')) {
+      existingFooter.remove();
+    }
     
     if(activeButton.classList.contains('home-btn')) {
       content.appendChild(home().homeContainer);
