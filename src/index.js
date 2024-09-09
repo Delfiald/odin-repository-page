@@ -7,6 +7,7 @@ import about from './about.js'
 import modal from './menuModal.js'
 
 (() => {
+  const body = document.querySelector('body');
   const header = document.querySelector('header');
   const content = document.getElementById('content');
   const buttons = document.querySelectorAll('.btn');
@@ -82,7 +83,8 @@ import modal from './menuModal.js'
       content.appendChild(menu());
       header.style.background = 'var(--color-light)';
     }else if(activeButton.classList.contains('about-btn')) {
-      content.appendChild(about());
+      content.appendChild(about().aboutContainer);
+      body.appendChild(about().footer);
     }
   }
 
