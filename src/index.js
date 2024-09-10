@@ -1,11 +1,11 @@
 import "./css/styles.css"
 
 // Home
-import home from './home.js'
-import menu from './menu.js'
-import about from './about.js'
-import modal from './menuModal.js'
-import bag from './bag.js'
+import home from './components/home.js'
+import menu from './components/menu.js'
+import about from './components/about.js'
+import modal from './components/menuModal.js'
+import bag from './components/bag.js'
 
 (() => {
   const body = document.querySelector('body');
@@ -18,6 +18,7 @@ import bag from './bag.js'
   // Menu Modal
   const menuModalHandler = (e) => {
     const menu = e.target.closest('.menu');
+    // Tampilkan detail menu berdasarkan dataset.id
 
     content.appendChild(modal);
   }
@@ -30,6 +31,8 @@ import bag from './bag.js'
   const addingButtonHandler = (e) => {
     const addBtn = e.target.closest('.add-btn');
     const orderCount = e.target.closest('.add-wrapper').querySelector('.value');
+    const menu = e.target.closest('.menu');
+    console.log(menu.dataset.id);
     addBtn.classList.add('hidden');
     orderCount.textContent = 1;
   }
@@ -44,12 +47,15 @@ import bag from './bag.js'
     if(orderCount.textContent == 0){
       addBtn.classList.remove('hidden');
     }
+    const menu = e.target.closest('.menu');
+    console.log(menu.dataset.id);
   }
 
   const plusOrderHandler = (e) => {
     const order = e.target.closest('.add-wrapper');
     const orderCount = order.querySelector('.value');
-    
+    const menu = e.target.closest('.menu');
+    console.log(menu.dataset.id);
     orderCount.textContent++;
   }
 
@@ -70,6 +76,8 @@ import bag from './bag.js'
 
   // Bag Handler
   const bagHandler = () => {
+    // Ambil menu apa aja dan berapa banyak tiap menu
+
     const isBag = document.querySelector('.bag');
     if(isBag) {
       isBag.remove();

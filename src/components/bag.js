@@ -1,5 +1,5 @@
-import {content} from './menu.js'
-import menu from './images/menus/seblak.png'
+import {content, append} from '../utils/domHelpers.js'
+import menu from '../images/menus/seblak.png'
 
 export default () => {
   const bag = content.createElement('section', ['bag']);
@@ -9,12 +9,12 @@ export default () => {
   // Close Button
   const closeButton = content.createElement('div', ['close-btn']);
   const closeIcon = content.createElement('i', ['fas', 'fa-x'])
-  closeButton.appendChild(closeIcon);
+  append.element(closeButton, closeIcon)
   
   // Bag Header
   const bagHeader = content.createElement('div', ['bag-header']);
   const bagHeaderText = content.createElement('div', [], 'Bag');
-  bagHeader.appendChild(bagHeaderText);
+  append.element(bagHeader, bagHeaderText)
 
   // Bag Content
   const bagContent = content.createElement('div', ['bag-content'])
@@ -22,7 +22,7 @@ export default () => {
   const itemPict = content.createElement('div', ['item-pict'])
   const img = content.createElement('img');
   img.setAttribute('src', menu)
-  itemPict.appendChild(img);
+  append.element(itemPict, img)
   const itemName = content.createElement('div', ['item-name'], 'Lorem');
   const itemPrice = content.createElement('div', ['item-price'], '50');
   const amountWrapper = content.createElement('div', ['amount-wrapper']);
@@ -31,35 +31,25 @@ export default () => {
   const plusButton = content.createElement('i', ['fas', 'fa-plus']);
   const total = content.createElement('div', ['item-total'], '100');
 
-  amountWrapper.appendChild(minusButton)
-  amountWrapper.appendChild(amount)
-  amountWrapper.appendChild(plusButton)
+  append.element(amountWrapper, minusButton, amount, plusButton)
 
-  bagItem.appendChild(itemPict)
-  bagItem.appendChild(itemName)
-  bagItem.appendChild(itemPrice)
-  bagItem.appendChild(amountWrapper)
-  bagItem.appendChild(total)
+  append.element(bagItem, itemPict, itemName, itemPrice, amountWrapper, total)
 
-  bagContent.appendChild(bagItem);
+  append.element(bagContent, bagItem)
 
   // Bag Bottom
   const bagBottom = content.createElement('div', ['bag-bottom']);
   const subTotalWrapper = content.createElement('div', ['sub-total-wrapper'])
   const subTotalText = content.createElement('div', ['sub-total-text'], 'Subtotal')
   const subTotal = content.createElement('div', ['sub-total'], '50')
-  subTotalWrapper.appendChild(subTotalText);
-  subTotalWrapper.appendChild(subTotal);
+  append.element(subTotalWrapper, subTotalText, subTotal)
   const checkoutButton = content.createElement('div', ['checkout-btn'], 'Order');
-  bagBottom.appendChild(subTotalWrapper);
-  bagBottom.appendChild(checkoutButton);
+  append.element(bagBottom, subTotalWrapper, checkoutButton)
 
-  bagContainer.appendChild(bagHeader)
-  bagContainer.appendChild(bagContent)
-  bagContainer.appendChild(bagBottom)
-  bagContainer.appendChild(closeButton)
-  bagWrapper.appendChild(bagContainer)
-  bag.appendChild(bagWrapper);
+  append.element(bagContainer, bagHeader, bagContent, bagBottom, closeButton)
+  
+  append.element(bagWrapper, bagContainer);
+  append.element(bag, bagWrapper);
 
   return bag;
 }

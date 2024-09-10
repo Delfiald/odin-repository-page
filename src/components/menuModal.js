@@ -1,5 +1,6 @@
-import {content} from './menu.js'
-import food1 from './images/menus/seblak.png'
+import {content, append} from '../utils/domHelpers.js'
+import {getMenu} from './menu.js'
+import food1 from '../images/menus/seblak.png'
 
 export default (() => {
   const modal = content.createElement('div', ['menu-description'])
@@ -12,38 +13,32 @@ export default (() => {
   const imageWrapper = content.createElement('div', ['img-wrapper']);
   const img = content.createElement('img');
   img.setAttribute('src', food1);
-  imageWrapper.appendChild(img);
+  append.element(imageWrapper, img)
 
   // Info
   const info = content.createElement('div', ['info']);
 
   // Title
   const titleWrapper = content.createElement('div', ['title-wrapper']);
-  const title = content.createElement('div');
-  title.textContent = 'Lorem Lorem'
-  titleWrapper.appendChild(title);
+  const title = content.createElement('div', [], 'Lorem Lorem');
+  append.element(titleWrapper, title)
 
   // Description
   const descriptionWrapper = content.createElement('div', ['text-wrapper']);
-  const description = content.createElement('p');
-  description.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus laboriosam recusandae praesentium at amet! Voluptatibus quidem a ullam cumque libero.'
-  descriptionWrapper.appendChild(description);
+  const description = content.createElement('p', [], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus laboriosam recusandae praesentium at amet! Voluptatibus quidem a ullam cumque libero.');
+  append.element(descriptionWrapper, description)
 
   // Close Button
   const closeBtn = content.createElement('div', ['close-btn'])
   const closeIcon = content.createElement('i', ['fas', 'fa-x']);
-  closeBtn.appendChild(closeIcon);
+  append.element(closeBtn, closeIcon)
   
-  info.appendChild(titleWrapper)
-  info.appendChild(descriptionWrapper)
+  append.element(info, titleWrapper, descriptionWrapper)
 
-  contentWrapper.appendChild(imageWrapper);
-  contentWrapper.appendChild(info);
-  contentWrapper.appendChild(closeBtn);
-
+  append.element(contentWrapper, imageWrapper, info, closeBtn)
   
-  modalWrapper.appendChild(contentWrapper);
-  modal.appendChild(modalWrapper);
+  append.element(modalWrapper, contentWrapper)
+  append.element(modal, modalWrapper)
   
   return modal;
 })()
