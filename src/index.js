@@ -7,6 +7,7 @@ import about from './about.js'
 import modal from './menuModal.js'
 
 (() => {
+  const body = document.querySelector('body');
   const header = document.querySelector('header');
   const content = document.getElementById('content');
   const buttons = document.querySelectorAll('.btn');
@@ -74,6 +75,11 @@ import modal from './menuModal.js'
 
     activeButton.classList.add('active');
     header.style.background = 'transparent';
+
+    const existingFooter = document.querySelector('footer');
+    if (existingFooter && !activeButton.classList.contains('about-btn')) {
+      existingFooter.remove();
+    }
     
     if(activeButton.classList.contains('home-btn')) {
       content.appendChild(home().homeContainer);
@@ -82,7 +88,9 @@ import modal from './menuModal.js'
       content.appendChild(menu());
       header.style.background = 'var(--color-light)';
     }else if(activeButton.classList.contains('about-btn')) {
-      content.appendChild(about());
+      content.appendChild(about().aboutContainer);
+      body.appendChild(about().footer);
+      header.style.background = 'var(--color-light)';
     }
   }
 
