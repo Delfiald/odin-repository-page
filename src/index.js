@@ -5,6 +5,7 @@ import home from './home.js'
 import menu from './menu.js'
 import about from './about.js'
 import modal from './menuModal.js'
+import bag from './bag.js'
 
 (() => {
   const body = document.querySelector('body');
@@ -66,9 +67,32 @@ import modal from './menuModal.js'
       return menuButton;
     }
   }
+
+  // Bag Handler
+  const bagHandler = () => {
+    const isBag = document.querySelector('.bag');
+    if(isBag) {
+      isBag.remove();
+    }
+
+    body.appendChild(bag());
+  }
+
+  const closeBag = () => {
+    const bag = document.querySelector('.bag');
+    if(bag) {
+      const bagContainer = bag.querySelector('.bag-container');
+      bagContainer.style.animation = 'slide-out 0.5s ease-in-out forwards';
+      bagContainer.addEventListener('animationend', (e) => {
+        bag.remove();
+      })
+    }
+  }
   
   // Append Module
   const appendContent = (e) => {
+    header.classList.add('load');
+
     content.innerHTML = '';
     
     const activeButton = e ? navButtonHandler(e) : homeButton;
@@ -92,6 +116,10 @@ import modal from './menuModal.js'
       body.appendChild(about().footer);
       header.style.background = 'var(--color-light)';
     }
+
+    setTimeout((e) => {
+      header.classList.remove('load')
+    }, 500);
   }
 
   document.addEventListener('click', (e) => {
@@ -105,8 +133,12 @@ import modal from './menuModal.js'
       plusOrderHandler(e);
     }else if(e.target.closest('.menu')){
       menuModalHandler(e);
-    }else if(e.target.closest('.close-btn')){
+    }else if(e.target.closest('#content .close-btn')){
       closeMenuModalHandler(e);
+    }else if(e.target.closest('.bag-btn')){
+      bagHandler()
+    }else if(e.target.closest('.bag .close-btn')){
+      closeBag();
     }
   })
 
