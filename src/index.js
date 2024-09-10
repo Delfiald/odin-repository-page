@@ -90,6 +90,7 @@ import modal from './menuModal.js'
     }else if(activeButton.classList.contains('about-btn')) {
       content.appendChild(about().aboutContainer);
       body.appendChild(about().footer);
+      header.style.background = 'var(--color-light)';
     }
   }
 

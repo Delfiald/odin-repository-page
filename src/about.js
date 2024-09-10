@@ -1,5 +1,6 @@
 import {content} from './menu.js'
 import menu from './images/menus/seblak.png'
+import location from './images/location.png'
 
 export default () => {
   const aboutContainer = content.createElement('section', ['about']);
@@ -14,6 +15,75 @@ export default () => {
   headerText.textContent = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.'
   aboutHeader.appendChild(header)
   aboutHeader.appendChild(headerText)
+
+  // Open Hour and Location
+  const hourLocation = content.createElement('div', ['hour-location'])
+  const openHourWrapper = content.createElement('div', ['open-wrapper'])
+  const openHeader = content.createElement('div', ['open-header'])
+  const openHeaderText = content.createElement('div', ['header-text'])
+  const openContent = content.createElement('div', ['open-content']);
+
+  const dayWrapper = content.createElement('div', ['day-wrapper']);
+  const day1 = content.createElement('div', ['day'])
+  day1.textContent = 'Monday'
+  const day2 = content.createElement('div', ['day'])
+  day2.textContent = 'Tuesday'
+  const day3 = content.createElement('div', ['day'])
+  day3.textContent = 'Wednesday'
+  const day4 = content.createElement('div', ['day'])
+  day4.textContent = 'Thursday'
+  const day5 = content.createElement('div', ['day'])
+  day5.textContent = 'Friday'
+  const day6 = content.createElement('div', ['day'])
+  day6.textContent = 'Saturday'
+  const day7 = content.createElement('div', ['day'])
+  day7.textContent = 'Sunday'
+  dayWrapper.appendChild(day1)
+  dayWrapper.appendChild(day2)
+  dayWrapper.appendChild(day3)
+  dayWrapper.appendChild(day4)
+  dayWrapper.appendChild(day5)
+  dayWrapper.appendChild(day6)
+  dayWrapper.appendChild(day7)
+
+  const hourWrapper = content.createElement('div', ['hour-wrapper']);
+  const hour1 = content.createElement('div', ['hour']);
+  hour1.textContent = '9:00am - 5:30pm'
+  const hour2 = content.createElement('div', ['hour']);
+  hour2.textContent = '9:00am - 5:30pm'
+  const hour3 = content.createElement('div', ['hour']);
+  hour3.textContent = '9:00am - 5:30pm'
+  const hour4 = content.createElement('div', ['hour']);
+  hour4.textContent = '9:00am - 5:30pm'
+  const hour5 = content.createElement('div', ['hour']);
+  hour5.textContent = '1:00pm - 6:30pm'
+  const hour6 = content.createElement('div', ['hour']);
+  hour6.textContent = '9:00am - 11:59pm'
+  const hour7 = content.createElement('div', ['hour']);
+  hour7.textContent = '8:00am - 10:30pm'
+  hourWrapper.appendChild(hour1)
+  hourWrapper.appendChild(hour2)
+  hourWrapper.appendChild(hour3)
+  hourWrapper.appendChild(hour4)
+  hourWrapper.appendChild(hour5)
+  hourWrapper.appendChild(hour6)
+  hourWrapper.appendChild(hour7)
+  
+  openContent.appendChild(dayWrapper)
+  openContent.appendChild(hourWrapper)
+
+  openHeaderText.textContent = 'OPENING HOURS'
+  openHeader.appendChild(openHeaderText);
+  openHourWrapper.appendChild(openHeader);
+  openHourWrapper.appendChild(openContent);
+  
+  const locationWrapper = content.createElement('div', ['location-wrapper'])
+  const locationImage = content.createElement('img')
+  locationImage.setAttribute('src', location)
+  locationWrapper.appendChild(locationImage);
+
+  hourLocation.appendChild(openHourWrapper)
+  hourLocation.appendChild(locationWrapper)
 
   // Timeline / Our History
   const timeline = content.createElement('div', ['timeline']);
@@ -71,16 +141,32 @@ export default () => {
 
   // Founder
   const founderWrapper = content.createElement('div', ['founder']);
+  const founderHeader = content.createElement('div', ['founder-header'])
+  founderHeader.textContent = 'Founder';
+  const founderContent = content.createElement('div', ['founder-content']);
+  const founderName = content.createElement('div', ['founder-name']);
+  founderName.textContent = 'Megatron'
+  const founderText= content.createElement('div', ['founder-text'])
+  founderText.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore minus repellat illo corporis esse, fuga ducimus tempora officia distinctio vero!'
+  const founderInfo = content.createElement('div', ['founder-info-wrapper']);
+  const founderImageWrapper = content.createElement('div', ['image-wrapper'])
+  const founderImage = content.createElement('img');
+  founderImage.setAttribute('src', menu);
+  founderImageWrapper.appendChild(founderImage);
 
-  // Review and Location
-  const reviewLocation = content.createElement('div', ['review-location'])
+  founderInfo.appendChild(founderName)
+  founderInfo.appendChild(founderText)
+  founderContent.appendChild(founderInfo);
+  founderContent.appendChild(founderImageWrapper);
 
+  founderWrapper.appendChild(founderHeader);
+  founderWrapper.appendChild(founderContent);
 
   // Append About Content
   aboutContainer.appendChild(aboutHeader);
+  aboutContainer.appendChild(hourLocation);
   aboutContainer.appendChild(timeline);
   aboutContainer.appendChild(founderWrapper);
-  aboutContainer.appendChild(reviewLocation);
 
   // Footer
   const footer = content.createElement('footer')
@@ -95,10 +181,10 @@ export default () => {
   copyrightWrapper.appendChild(cp1);
 
   // Info
-  const infoWrapper = content.createElement('div', ['info-wrapper']);
-  const infoText = content.createElement('div');
-  infoText.textContent = `Odin Restaurant © 2024`
-  infoWrapper.appendChild(infoText);
+  const footerText = content.createElement('div', ['info-wrapper']);
+  const text = content.createElement('div');
+  text.textContent = `Odin Restaurant © 2024`
+  footerText.appendChild(text);
 
   // Socials
   const socialsWrapper = content.createElement('div', ['socials-wrapper']);
@@ -116,7 +202,7 @@ export default () => {
   socialsWrapper.appendChild(linkedin);
 
   footer.appendChild(copyrightWrapper);
-  footer.appendChild(infoWrapper);
+  footer.appendChild(footerText);
   footer.appendChild(socialsWrapper);
 
   return {
