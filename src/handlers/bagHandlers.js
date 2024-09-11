@@ -1,19 +1,12 @@
 import bag from '../components/bag.js'
+import updateBagCounts from "../utils/updateBagCounts";
+import getMenu from "../utils/getMenu";
 
 export default (() => {
   const body = document.querySelector('body');
   
   const bagHandler = () => {
-    const menus = document.querySelectorAll('.menu');
-    const items = []
-
-    menus.forEach(menu => {
-      const item = {
-        id: menu.dataset.id,
-        amount: menu.querySelector('.value').textContent
-      };
-      items.push(item);
-    });
+    const items = getMenu('menu');
 
     body.appendChild(bag(items));
   }
@@ -25,6 +18,7 @@ export default (() => {
       bagContainer.style.animation = 'slide-out 0.5s ease-in-out forwards';
       bagContainer.addEventListener('animationend', (e) => {
         isBag.remove();
+        updateBagCounts.updateBagCount();
       })
     }
   }

@@ -1,6 +1,8 @@
 import {content, append} from '../utils/domHelpers.js'
 import menu from '../images/menus/seblak.png'
 import location from '../images/location.png'
+import founder from '../images/founder.png'
+import restaurant from '../images/timeline.jpg'
 
 export default () => {
   const aboutContainer = content.createElement('section', ['about']);
@@ -58,36 +60,42 @@ export default () => {
   const timeLineHeader = content.createElement('div', ['timeline-header'], 'Our History')
   const timelineWrapper = content.createElement('div', ['timeline-wrapper'])
   const time1 = content.createElement('div', ['time'])
-  const image1 = content.createElement('img', ['time-image']);
-  image1.setAttribute('src', menu)
+  const imageWrapper1 = content.createElement('div', ['time-image'])
+  const image1 = content.createElement('img', []);
+  image1.setAttribute('src', restaurant)
+  imageWrapper1.appendChild(image1);
   const text1 = content.createElement('div', ['time-text'], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, consectetur sit voluptate iusto sunt repudiandae?')
   const lineWrapper1 = content.createElement('div', ['line-wrapper']);
   const line1 = content.createElement('div', ['line']);
   const year1 = content.createElement('div', ['time-year'], '2023');
 
   append.element(lineWrapper1, year1, line1)
-  append.element(time1, image1, lineWrapper1, text1)
+  append.element(time1, imageWrapper1, lineWrapper1, text1)
 
   const time2 = content.createElement('div', ['time'])
-  const image2 = content.createElement('img', ['time-image']);
-  image2.setAttribute('src', menu)
-  const text2 = content.createElement('div', ['time-text'], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, consectetur sit voluptate iusto sunt repudiandae?')
+  const imageWrapper2 = content.createElement('div', ['time-image'])
+  const image2 = content.createElement('img', []);
+  image2.setAttribute('src', restaurant)
+  imageWrapper2.appendChild(image2);
+  const text2 = content.createElement('div', ['time-text'], 'Still stuck in the same routine, repeating the same tasks with no change or progress. The days blurred together with little innovation or excitement. Everything felt stagnant, as if things were destined to stay the same indefinitely')
   const lineWrapper2 = content.createElement('div', ['line-wrapper']);
   const line2 = content.createElement('div', ['line']);
   const year2 = content.createElement('div', ['time-year'], '2023.2');
 
   append.element(lineWrapper2, year2, line2)
-  append.element(time2, image2, lineWrapper2, text2)
+  append.element(time2, imageWrapper2, lineWrapper2, text2)
   const time3 = content.createElement('div', ['time'])
-  const image3 = content.createElement('img', ['time-image']);
-  image3.setAttribute('src', menu)
-  const text3 = content.createElement('div', ['time-text'], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, consectetur sit voluptate iusto sunt repudiandae?')
+  const imageWrapper3 = content.createElement('div', ['time-image'])
+  const image3 = content.createElement('img', []);
+  image3.setAttribute('src', restaurant)
+  imageWrapper3.appendChild(image3);
+  const text3 = content.createElement('div', ['time-text'], 'Absolutely nothing happened this year. Zero progress, no excitement—just a complete waste of 365 days.')
   const lineWrapper3 = content.createElement('div', ['line-wrapper']);
   const line3 = content.createElement('div', ['line']);
   const year3 = content.createElement('div', ['time-year'], '2024');
 
   append.element(lineWrapper3, year3, line3)
-  append.element(time3, image3, lineWrapper3, text3)
+  append.element(time3, imageWrapper3, lineWrapper3, text3)
 
   append.element(timelineWrapper, time1, time2, time3)
   append.element(timeline, timeLineHeader, timelineWrapper)
@@ -97,11 +105,11 @@ export default () => {
   const founderHeader = content.createElement('div', ['founder-header'], 'Founder')
   const founderContent = content.createElement('div', ['founder-content']);
   const founderName = content.createElement('div', ['founder-name'], 'Megatron');
-  const founderText= content.createElement('div', ['founder-text'], 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore minus repellat illo corporis esse, fuga ducimus tempora officia distinctio vero!')
+  const founderText= content.createElement('div', ['founder-text'], 'Megan "Megatron" Harvey Oswald Griffin is the founder of this restaurant. With a passion for bold flavors and a love for unique culinary experiences, she created a space where every dish reflects her creativity and dedication to quality. Meg’s vision is to offer memorable dining that combines her personal flair with exceptional ingredients.')
   const founderInfo = content.createElement('div', ['founder-info-wrapper']);
   const founderImageWrapper = content.createElement('div', ['image-wrapper'])
   const founderImage = content.createElement('img');
-  founderImage.setAttribute('src', menu);
+  founderImage.setAttribute('src', founder);
 
   append.element(founderImageWrapper, founderImage)
   

@@ -4,8 +4,7 @@ export default (() =>{
   const addingButtonHandler = (e) => {
     const addBtn = e.target.closest('.add-btn');
     const orderCount = e.target.closest('.add-wrapper').querySelector('.value');
-    const menu = e.target.closest('.menu');
-    console.log(menu.dataset.id);
+
     addBtn.classList.add('hidden');
     orderCount.textContent = 1;
 
@@ -33,6 +32,7 @@ export default (() =>{
 
     updateBagCounts.updateBagCount();
   }
+
   return {
     addingButtonHandler: addingButtonHandler,
     minusOrderHandler: minusOrderHandler,
