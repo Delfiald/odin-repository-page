@@ -125,11 +125,22 @@ export default () => {
 
   // Copyright
   const copyrightWrapper = content.createElement('div', ['copyright-wrapper']);
-  const cp1 = content.createElement('div', ['cp-1'], 'Image by storyset on Freepik')
-  const anchor = content.createElement('a');
+  const cp1 = content.createElement('div', ['cp-1'])
+  const anchor = content.createElement('a', [], 'Image by storyset on Freepik');
   anchor.setAttribute('href', 'https://www.freepik.com/free-vector/people-eating-restaurant-concept-illustration_106335419.htm#fromView=search&page=1&position=3&uuid=ae296b3c-f1ce-4abe-86f1-83e18ba925e1')
+  const cp2 = content.createElement('div', ['cp-2'])
+  const anchor2 = content.createElement('a', [], 'png image from pngtree.com');
+  anchor2.setAttribute('href', 'https://pngtree.com')
+
+  anchor.setAttribute('rel', 'noreferrer noopener')
+  anchor.setAttribute('target', '_blank')
+
+  anchor2.setAttribute('rel', 'noreferrer noopener')
+  anchor2.setAttribute('target', '_blank')
+  
   append.element(cp1, anchor)
-  append.element(copyrightWrapper, cp1)
+  append.element(cp2, anchor2)
+  append.element(copyrightWrapper, cp1, cp2)
 
   // Info
   const footerText = content.createElement('div', ['info-wrapper']);

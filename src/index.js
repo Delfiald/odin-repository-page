@@ -1,10 +1,9 @@
 import "./css/styles.css"
 
 // Components
-import home from './components/home.js'
-import menu from './components/menu.js'
-import about from './components/about.js'
-import bagBtn from './components/bagIcon.js'
+import home from './handlers/appendHome.js'
+import menu from './handlers/appendMenu.js'
+import about from './handlers/appendAbout.js'
 
 // Handlers
 import button from "./handlers/buttonHandlers.js"
@@ -14,8 +13,8 @@ import bagEdit from './handlers/bagEditHandlers.js'
 import order from "./handlers/orderHandlers.js"
 
 // Utils
-import updateBagCounts from "./utils/updateBagCounts";
 import nav from "./utils/getActiveButton.js"
+import removeCurrentContent from "./utils/removeCurrentContent.js"
 
 (() => {
   const body = document.querySelector('body');
@@ -26,39 +25,22 @@ import nav from "./utils/getActiveButton.js"
   // Append Module
   const appendContent = (e) => {
     header.classList.add('load');
-
-    content.innerHTML = '';
     
     const activeButton = e ? nav.getActiveButton(e) : homeButton;
 
     activeButton.classList.add('active');
-    header.style.background = 'transparent';
 
-    const existingFooter = document.querySelector('footer');
-    const bagIcon = document.querySelector('.bag-btn');
-    if (existingFooter && !activeButton.classList.contains('about-btn')) {
-      existingFooter.remove();
-    }
-
-    if (bagIcon && !activeButton.classList.contains('menu-btn')) {
-      bagIcon.remove();
-    }
+    removeCurrentContent();
     
     if(activeButton.classList.contains('home-btn')) {
-      content.appendChild(home().homeContainer);
-      content.appendChild(home().background);
+      home(content);
     }else if(activeButton.classList.contains('menu-btn') || activeButton.classList.contains('order-btn')) {
-      header.querySelector('nav').appendChild(bagBtn());
-      content.appendChild(menu());
-      updateBagCounts.updateBagCount();
-      header.style.background = 'var(--color-light)';
+      menu(content, header);
     }else if(activeButton.classList.contains('about-btn')) {
-      content.appendChild(about().aboutContainer);
-      body.appendChild(about().footer);
-      header.style.background = 'var(--color-light)';
+      about(content, body, header);
     }
 
-    setTimeout((e) => {
+    setTimeout(() => {
       header.classList.remove('load')
     }, 500);
   }
