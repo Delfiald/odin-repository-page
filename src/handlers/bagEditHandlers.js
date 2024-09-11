@@ -1,4 +1,5 @@
 import updateBag from "../utils/updateBag";
+import checkoutButton from '../utils/checkoutButton.js';
 
 export default (() => {
   const decreaseAmount = (item) => {
@@ -9,6 +10,7 @@ export default (() => {
       item.style.animation = 'slide-out .3s ease-in-out forwards'
       item.addEventListener('animationend', (e) => {
         item.remove();
+        checkoutButton()
       })
     }
 
