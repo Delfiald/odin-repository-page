@@ -18,3 +18,17 @@ This project is focused on learning and implementing **Webpack** to bundle and m
 - **CSS3**: Styling and layout, including responsiveness.
 - **JavaScript (ES6+)**: Handling DOM manipulation, bag management logic, and dynamic content loading.
 - **FontAwesome**: Used for icons in the user interface.
+
+## Installation
+
+1. Clone the repository
+2. Navigate into the project directory
+3. Install the dependencies:
+```bash
+npm install
+```
+
+
+## License
+
+MIT License
