@@ -1,5 +1,4 @@
 import {content, append} from '../utils/domHelpers.js'
-import menu from '../images/menus/seblak.png'
 import location from '../images/location.png'
 import founder from '../images/founder.png'
 import restaurant from '../images/timeline.jpg'

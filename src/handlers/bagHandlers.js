@@ -1,6 +1,7 @@
 import bag from '../components/bag.js'
 import updateBagCounts from "../utils/updateBagCounts";
 import getMenu from "../utils/getMenu";
+import checkoutButton from '../utils/checkoutButton.js';
 
 export default (() => {
   const body = document.querySelector('body');
@@ -9,6 +10,8 @@ export default (() => {
     const items = getMenu('menu');
 
     body.appendChild(bag(items));
+
+    checkoutButton();
   }
 
   const closeBag = () => {

@@ -11,6 +11,7 @@ import button from "./handlers/buttonHandlers.js"
 import modal from "./handlers/modalHandlers.js"
 import bag from './handlers/bagHandlers.js'
 import bagEdit from './handlers/bagEditHandlers.js'
+import order from "./handlers/orderHandlers.js"
 
 // Utils
 import updateBagCounts from "./utils/updateBagCounts";
@@ -81,6 +82,10 @@ import nav from "./utils/getActiveButton.js"
       bag.closeBag();
     }else if(e.target.closest('.bag i')){
       bagEdit.bagEditHandlers(e);
+    }else if(e.target.closest('.checkout-btn')){
+      order.orderShow(e);
+    }else if(e.target.closest('.order-thanks-btn')){
+      order.orderClose();
     }
   })
 
